@@ -7,7 +7,7 @@ interface RegisterModelStore {
 }
 
 export const useRegisterModel = create<RegisterModelStore>((set) => ({
-  isOpen: true,
+  isOpen: false,
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false }),
 }));
