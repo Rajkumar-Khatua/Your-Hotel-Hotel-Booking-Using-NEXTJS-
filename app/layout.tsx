@@ -6,6 +6,7 @@ import ClientOnly from "./components/ClientOnly";
 import Model from "./components/models/Model";
 import RegisterModel from "./components/models/RegisterModel";
 import ToasterProvider from "./providers/ToasterProvider";
+import LoginModel from "./components/models/LoginModel";
 
 export const metadata: Metadata = {
   title: "Your Hotel!",
@@ -27,6 +28,7 @@ export default function RootLayout({
         <ClientOnly>
           <ToasterProvider />
           <RegisterModel />
+          <LoginModel />
           <Navbar />
         </ClientOnly>
         {children}
