@@ -9,9 +9,10 @@ import Heading from "../Heading";
 import Input from "../inputes/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
-import { TfiGoogle } from "react-icons/tfi";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
+import { signIn } from "next-auth/react";
+import { sign } from "crypto";
 
 const RegisterModel = () => {
   const RegisterModel = useRegisterModel();
@@ -93,13 +94,13 @@ const RegisterModel = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div className="flex p-2 gap-2 items-center justify-center">
         <p className="text-sm text-neutral-500">Already have an account?</p>

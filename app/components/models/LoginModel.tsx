@@ -14,6 +14,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { sign } from "crypto";
 
 const LoginModel = () => {
   const router = useRouter();
@@ -44,7 +45,6 @@ const LoginModel = () => {
         toast.success("Logged in successfully");
         router.refresh();
         LoginModel.onClose();
-        
       }
       if (callback?.error) {
         toast.error(callback.error);
@@ -94,13 +94,13 @@ const LoginModel = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div className="flex p-2 gap-2 items-center justify-center">
         <p className="text-sm text-neutral-500">Don&apos;t have an account?</p>

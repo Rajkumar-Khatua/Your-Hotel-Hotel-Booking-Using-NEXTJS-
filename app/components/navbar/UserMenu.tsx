@@ -6,11 +6,11 @@ import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModel from "@/app/hooks/useRegisterModel";
 import useLoginModel from "@/app/hooks/useLoginModel";
-import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
+import { SafeUser } from "@/app/types";
 
 interface UserMenuProps {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 }
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,12 +33,13 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           py-3 
           px-4 
           rounded-full 
-          hover:bg-neutral-100 
+          hover:shadow-md 
           transition 
           cursor-pointer
+          duration-200
         "
         >
-          Airbnb your home
+          Your Hotel Home!
         </div>
         <div
           onClick={toggleOpen}
@@ -60,7 +61,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         >
           <HiOutlineMenuAlt1 />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
