@@ -18,32 +18,35 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
 }) => {
   const router = useRouter();
   const params = useSearchParams();
-
+  // Create a new function that will handle the click event and update the query string
   const handleClick = useCallback(() => {
     let currentQuery = {};
-
+    // If there are params, parse them and store them in currentQuery
     if (params) {
       currentQuery = qs.parse(params.toString());
     }
-
+    // Update the query string with the new category and remove it if it's already selected
     const updatedQuery: any = {
       ...currentQuery,
       category: label,
     };
-
+    // If the category is already selected, remove it from the query string
     if (params?.get("category") === label) {
       delete updatedQuery.category;
     }
 
+    // Convert the updated query to a string and update the URL
     const url = qs.stringifyUrl(
       {
         url: "/",
         query: updatedQuery,
       },
+      // Skip null values when stringifying the URL
       { skipNull: true }
     );
-
+    // Push the new URL to the router
     router.push(url);
+    // Update the URL with the new query string
   }, [label, router, params]);
 
   return (
