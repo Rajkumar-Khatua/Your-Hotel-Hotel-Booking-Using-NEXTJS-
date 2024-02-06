@@ -6,8 +6,13 @@ import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModel from "@/app/hooks/useRegisterModel";
 import useLoginModel from "@/app/hooks/useLoginModel";
+import { User } from "@prisma/client";
+import { signOut } from "next-auth/react";
 
-const UserMenu = () => {
+interface UserMenuProps {
+  currentUser?: User | null;
+}
+const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const registerModel = useRegisterModel();
   const loginModel = useLoginModel();
@@ -81,10 +86,22 @@ const UserMenu = () => {
                 cursor-pointer
                 "
           >
-            <>
-              <MenuItem onClick={loginModel.onOpen} label="Login" />
-              <MenuItem onClick={registerModel.onOpen} label="Sign Up" />
-            </>
+            {currentUser ? (
+              <>
+                <MenuItem onClick={() => {}} label="My trips" />
+                <MenuItem onClick={() => {}} label="My favorites" />
+                <MenuItem onClick={() => {}} label="My reservations" />
+                <MenuItem onClick={() => {}} label="My properties" />
+                <MenuItem onClick={() => {}} label="Your Hotel My Home" />
+                <hr />
+                <MenuItem onClick={() => signOut()} label="Logout" />
+              </>
+            ) : (
+              <>
+                <MenuItem onClick={loginModel.onOpen} label="Login" />
+                <MenuItem onClick={registerModel.onOpen} label="Sign Up" />
+              </>
+            )}
           </div>
         </div>
       )}
