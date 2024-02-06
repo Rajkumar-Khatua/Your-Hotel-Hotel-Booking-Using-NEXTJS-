@@ -3,7 +3,7 @@
 import useRegisterModel from "@/app/hooks/useRegisterModel";
 import useLoginModel from "@/app/hooks/useLoginModel";
 import axios from "axios";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import Modal from "./Model";
 import Heading from "../Heading";
@@ -52,6 +52,11 @@ const LoginModel = () => {
       }
     });
   };
+// Toggling the Model Component 
+  const toggle = useCallback(() => {
+    LoginModel.onClose();
+    RegisterModel.onOpen();
+  }, [LoginModel, RegisterModel]);
 
   //  Body Content for the Model Component
   const bodyContent = (
@@ -103,12 +108,14 @@ const LoginModel = () => {
         onClick={() => signIn("github")}
       />
       <div className="flex p-2 gap-2 items-center justify-center">
-        <p className="text-sm text-neutral-500">Don&apos;t have an account?</p>
+        <p className="text-sm text-neutral-500">
+          First Time Using Your Hotel ?{" "}
+        </p>
         <button
           className="text-sm text-neutral-800 hover:underline transition duration-300"
-          onClick={RegisterModel.onClose}
+          onClick={toggle}
         >
-          Login
+          Create an account now!
         </button>
       </div>
     </div>

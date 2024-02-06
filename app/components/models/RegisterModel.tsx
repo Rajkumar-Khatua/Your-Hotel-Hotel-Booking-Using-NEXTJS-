@@ -2,7 +2,7 @@
 
 import useRegisterModel from "@/app/hooks/useRegisterModel";
 import axios from "axios";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import Modal from "./Model";
 import Heading from "../Heading";
@@ -13,9 +13,11 @@ import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 import { sign } from "crypto";
+import useLoginModel from "@/app/hooks/useLoginModel";
 
 const RegisterModel = () => {
   const RegisterModel = useRegisterModel();
+  const LoginModel = useLoginModel();
   const [isLoaded, setIsLoaded] = useState(false);
 
   const {
@@ -45,6 +47,12 @@ const RegisterModel = () => {
         setIsLoaded(false);
       });
   };
+
+  // Toggling the Model Component
+  const toggle = useCallback(() => {
+    RegisterModel.onClose();
+    LoginModel.onOpen();
+  }, [LoginModel, RegisterModel]);
 
   //  Body Content for the Model Component
   const bodyContent = (
@@ -106,7 +114,7 @@ const RegisterModel = () => {
         <p className="text-sm text-neutral-500">Already have an account?</p>
         <button
           className="text-sm text-neutral-800 hover:underline transition duration-300"
-          onClick={RegisterModel.onClose}
+          onClick={toggle}
         >
           Login
         </button>

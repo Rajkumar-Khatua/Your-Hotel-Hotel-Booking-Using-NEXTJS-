@@ -81,6 +81,7 @@ const Modal: React.FC<ModalProps> = ({
           outline-none 
           backdrop-blur-sm
           focus:outline-none
+          border-2
           "
       >
         <div
@@ -120,12 +121,10 @@ const Modal: React.FC<ModalProps> = ({
                     md:h-auto
                     border-0
                     rounded-lg
-                    shadow-lg
                     relative
                     flex
                     flex-col
                     w-full
-                    bg-white
                     outline-none
                     focus:outline-none
                 "
