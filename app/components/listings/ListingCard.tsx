@@ -1,6 +1,5 @@
 "use client";
 
-import { useCountries } from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
 import { Listing, Reservation } from "@prisma/client";
 import { useRouter } from "next/navigation";
@@ -8,6 +7,8 @@ import React, { useCallback, useMemo } from "react";
 import { format } from "date-fns";
 import Image from "next/image";
 import HeartButton from "../HeartButton";
+import useCountries from "@/app/hooks/useCountries";
+import Button from "../Button";
 
 interface ListingCardProps {
   data: Listing;
@@ -29,10 +30,11 @@ const ListingCard: React.FC<ListingCardProps> = ({
   currentUser,
 }) => {
   const router = useRouter();
+
   const { getByValues } = useCountries();
+  const location = getByValues(data.locationValue);
 
-  const location = getByValues(data.locationValues);
-
+  console.log(location?.label);
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
@@ -71,7 +73,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
               group
   "
     >
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-2 w-full transition">
         <div
           className="
             aspect-square
@@ -103,8 +105,39 @@ const ListingCard: React.FC<ListingCardProps> = ({
           </div>
         </div>
         <div className="font-semibold text-lg">
-          {location?.region}, {location?.label},{location?.flag}
+          {location?.label} , {location?.region} , {location?.flag}
         </div>
+        <div
+          className="
+          font-light text-neutral-500
+        "
+        >
+          {reservationDate || data.category}
+        </div>
+        <div
+          className="
+          flex flex-row items-center gap-1
+        "
+        >
+          <div className="font-semibold">${price}</div>
+          {!reservation && (
+            <div
+              className="
+              font-light text-neutral-500
+            "
+            >
+              / night
+            </div>
+          )}
+        </div>
+        {onAction && (
+          <Button
+            disabled={disabled}
+            small
+            label={actionLabel || "Cancel"}
+            onClick={handleCancel}
+          />
+        )}
       </div>
     </div>
   );
