@@ -1,22 +1,11 @@
-import { SafeUser } from "../types";
 import prisma from "@/app/libs/prismaDB";
-
-interface IGetListingByIs {
-  listingId: string;
-  currentUser?: SafeUser | null;
+interface IParams {
+  listingId?: string;
 }
 
-export default async function getListingByIds(params: IGetListingByIs) {
+export default async function getListingById(params: IParams) {
   try {
-    const { listingId, currentUser } = params;
-
-    if (!listingId) {
-      throw new Error("Listing ID is required");
-    }
-
-    if (!currentUser) {
-      throw new Error("User is required");
-    }
+    const { listingId } = params;
 
     const listing = await prisma.listing.findUnique({
       where: {
@@ -26,21 +15,22 @@ export default async function getListingByIds(params: IGetListingByIs) {
         user: true,
       },
     });
+
     if (!listing) {
       return null;
     }
 
     return {
       ...listing,
-      createdAt: listing.createdAt.toISOString(),
+      createdAt: listing.createdAt.toString(),
       user: {
         ...listing.user,
-        createdAt: listing.user.createdAt.toISOString(),
-        updatedAt: listing.user.updatedAt.toISOString(),
-        emailVerified: listing.user.emailVerified?.toISOString(),
+        createdAt: listing.user.createdAt.toString(),
+        updatedAt: listing.user.updatedAt.toString(),
+        emailVerified: listing.user.emailVerified?.toString() || null,
       },
     };
-  } catch (error) {
-    throw new Error(String(error));
+  } catch (error: any) {
+    throw new Error(error);
   }
 }
