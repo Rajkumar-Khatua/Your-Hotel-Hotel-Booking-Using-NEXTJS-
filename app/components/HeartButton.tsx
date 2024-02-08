@@ -1,5 +1,6 @@
 "use client";
 
+import useFavorite from "../hooks/useFavorite";
 import { SafeUser } from "../types";
 import { PiHeartFill, PiHeartThin } from "react-icons/pi";
 
@@ -12,8 +13,10 @@ const HeartButton: React.FC<HeartButtonProps> = ({
   currentUser,
   listingId,
 }) => {
-  const hasFavorite = true;
-  const toggleFavorite = () => {};
+  const { hasFavorited, toggleFavorite } = useFavorite({
+    currentUser,
+    listingId,
+  });
   return (
     <div
       onClick={toggleFavorite}
@@ -30,9 +33,7 @@ const HeartButton: React.FC<HeartButtonProps> = ({
       />
       <PiHeartFill
         size={24}
-        className={
-          hasFavorite ? "fill-rose-500 " : "fill-neutral-100/50"
-        }
+        className={hasFavorited ? "fill-rose-500 " : "fill-neutral-100/50"}
       />
     </div>
   );
