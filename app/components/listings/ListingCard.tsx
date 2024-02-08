@@ -1,7 +1,7 @@
 "use client";
 
-import { SafeUser } from "@/app/types";
-import { Listing, Reservation } from "@prisma/client";
+import { SafeListing, SafeUser } from "@/app/types";
+import { Reservation } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useMemo } from "react";
 import { format } from "date-fns";
@@ -11,7 +11,7 @@ import useCountries from "@/app/hooks/useCountries";
 import Button from "../Button";
 
 interface ListingCardProps {
-  data: Listing;
+  data: SafeListing;
   reservation?: Reservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
@@ -85,15 +85,17 @@ const ListingCard: React.FC<ListingCardProps> = ({
         >
           <Image
             fill
+            className="
+              object-cover 
+              h-full 
+              w-full 
+              group-hover:scale-110 
+              transition
+              duration-300
+              
+            "
             src={data.imageSrc}
             alt={data.title}
-            layout="fill"
-            objectFit="cover"
-            className="object-cover
-                       h-full w-full
-                       group-hover:scale-110
-                       translate-x-1 transition-transform 
-                       duration-300 ease-in-out"
           />
           <div
             className="

@@ -34,7 +34,7 @@ export default async function Home() {
         gap-8
       "
         >
-          {listings.map((listing: any) => {
+          {listings.map((listing:any) => {
             return (
               <ListingCard
                 currentUser={currentUser}
