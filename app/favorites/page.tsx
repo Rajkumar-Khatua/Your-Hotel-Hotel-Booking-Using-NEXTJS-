@@ -6,7 +6,7 @@ import FavoritesClientOnly from "./FavoritesClientOnly";
 
 const FavoritesPage = async () => {
   const favorites = await getFavoriteListings();
-  const currentUser = getCurrentUser();
+  const currentUser = await getCurrentUser();
 
   if (favorites.length === 0) {
     return (

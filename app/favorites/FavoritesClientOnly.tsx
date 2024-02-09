@@ -1,4 +1,3 @@
-import ClientOnly from "../components/ClientOnly";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import ListingCard from "../components/listings/ListingCard";
@@ -15,29 +14,24 @@ const FavoritesClientOnly: React.FC<FavoritesClientOnlyProps> = ({
   return (
     <Container>
       <Heading
+        center
         title="Your Favorites List"
-        subtitle="Here are the properties you've added to your favorites list.
-                     This list is only available to you.
-                      You can add or remove properties from your
-                       favorites list at any time. 
-                       You can also share your favorites list with your friends and family.
-                        Happy house hunting! 🏡"
+        subtitle="Here are the properties you've added to your favorites list."
       />
       <div
         className="
-                gird
-                mt-10
-                grid-cols-1
-                sm:grid-cols-2
-                md:grid-cols-3
-                lg:grid-cols-4
-                xl:grid-cols-5
-                2xl:grid-cols-6
-                3xl:grid-cols-7
-                gap-8
-      "
+          mt-10
+          grid 
+          grid-cols-1
+          sm:grid-cols-2 
+          md:grid-cols-3 
+          lg:grid-cols-4
+          xl:grid-cols-5
+          2xl:grid-cols-6
+          gap-8
+        "
       >
-        {favorites.map((listing) => (
+        {favorites.map((listing: any) => (
           <ListingCard
             key={listing.id}
             data={listing}
