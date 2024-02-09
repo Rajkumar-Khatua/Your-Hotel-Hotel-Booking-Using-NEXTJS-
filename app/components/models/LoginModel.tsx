@@ -42,7 +42,7 @@ const LoginModel = () => {
       setIsLoaded(false);
 
       if (callback?.ok) {
-        toast.success("Logged in successfully");
+        toast.success("Wow! dear, nice to see you again");
         router.refresh();
         LoginModel.onClose();
       }
@@ -52,7 +52,7 @@ const LoginModel = () => {
       }
     });
   };
-// Toggling the Model Component 
+  // Toggling the Model Component
   const toggle = useCallback(() => {
     LoginModel.onClose();
     RegisterModel.onOpen();
