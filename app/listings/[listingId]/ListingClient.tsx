@@ -72,6 +72,7 @@ const ListingClient: React.FC<ListingProps> = ({
         );
         setDateRange(initialDateRange);
         // Reerect to /trips page
+        router.push("/trips");
         router.refresh();
       })
       .catch((error) => {
