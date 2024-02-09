@@ -8,7 +8,6 @@ interface InputProps {
   id: string;
   label: string;
   type?: string;
-  placeholder: string;
   required?: boolean;
   disabled?: boolean;
   formatPrice?: boolean;
@@ -20,7 +19,6 @@ const Input: React.FC<InputProps> = ({
   label,
   type = "text",
   disabled,
-  placeholder,
   required,
   formatPrice,
   register,

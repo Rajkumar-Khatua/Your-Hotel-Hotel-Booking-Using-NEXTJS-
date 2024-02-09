@@ -123,6 +123,7 @@ const RentModel = () => {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
+        center={false}
         title="What type of property are you renting?"
         subtitle="Pick a category that best describes your property"
       />
@@ -148,6 +149,7 @@ const RentModel = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
+          center={false}
           title="Where is your place located?"
           subtitle="Help Guests find you!"
         />
@@ -165,6 +167,7 @@ const RentModel = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
+          center={false}
           title="How many guests can your place accommodate?"
           subtitle="Make sure to include all guests, even if they are children"
         />
@@ -197,6 +200,7 @@ const RentModel = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
+          center={false}
           title="Upload images of your place"
           subtitle="Show off your place to your guests"
         />
@@ -213,6 +217,7 @@ const RentModel = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
+          center={false}
           title="How would you describe your place?"
           subtitle="Write a detailed description to attract guests to your place 
           and let them know what to expect"
@@ -243,6 +248,7 @@ const RentModel = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
+          center={false}
           title="Set a competitive price for your place"
           subtitle="Set a price that reflects your place"
         />

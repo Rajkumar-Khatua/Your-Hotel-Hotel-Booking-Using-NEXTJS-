@@ -44,6 +44,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   return (
     <Container>
       <Heading
+        center={false}
         title="Your Reservations"
         subtitle="Manage your reservations here"
       />

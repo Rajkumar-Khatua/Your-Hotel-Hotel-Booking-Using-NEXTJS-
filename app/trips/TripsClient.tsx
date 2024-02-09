@@ -18,7 +18,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
 }) => {
   const router = useRouter();
   const [deletingId, setDeletingId] = useState("");
-  
+
   const onCancel = useCallback(
     (id: string) => {
       setDeletingId(id);
@@ -41,6 +41,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
   return (
     <Container>
       <Heading
+        center={false}
         title="Your Trips"
         subtitle="Where you're going and where you've been."
       />
