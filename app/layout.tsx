@@ -8,6 +8,7 @@ import ClientOnly from "./components/ClientOnly";
 import LoginModel from "./components/models/LoginModel";
 import RegisterModel from "./components/models/RegisterModel";
 import RentModel from "./components/models/RentModel";
+import SearchModel from "./components/models/SearchModel";
 
 import ToasterProvider from "./providers/ToasterProvider";
 import { getCurrentUser } from "./actions/getCurrentUser";
@@ -32,14 +33,13 @@ export default async function RootLayout({
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
+          <SearchModel />
           <RegisterModel />
           <LoginModel />
           <RentModel />
           <Navbar currentUser={currentUser} />
         </ClientOnly>
-        <div className="pb-20 pt-28">
-          {children}
-          </div>
+        <div className="pb-20 pt-28">{children}</div>
       </body>
     </html>
   );
