@@ -32,7 +32,7 @@ const EmptyState: React.FC<EmptyStateProps> = ({
           <Button
             outline
             onClick={() => router.push("/")}
-            label="Remove Filters"
+            label="Let's Start over"
           />
         )}
       </div>
