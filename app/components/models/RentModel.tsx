@@ -229,6 +229,7 @@ const RentModel = () => {
           register={register}
           errors={errors}
           required
+          placeholder="Ex: Cozy 2 Bedroom Apartment in the heart of Paris"
         />
         <hr />
         <Input
@@ -238,6 +239,7 @@ const RentModel = () => {
           register={register}
           errors={errors}
           required
+          placeholder="Ex: Our apartment is located in the heart of Paris,"
         />
       </div>
     );
@@ -261,6 +263,7 @@ const RentModel = () => {
           required
           formatPrice
           type="number"
+          placeholder="Ex: 100"
         />
       </div>
     );
